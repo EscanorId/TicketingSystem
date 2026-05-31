@@ -23,7 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         // 5. Buat kueri SQL UPDATE menggunakan prepared statements
-        $sql = "UPDATE tickets SET status = :status WHERE id = :id";
+        if ($status === 'Resolved') {
+            $sql = "UPDATE tickets SET status = :status, tanggal_resolve = CURRENT_TIMESTAMP WHERE id = :id";
+        } else {
+            $sql = "UPDATE tickets SET status = :status, tanggal_resolve = NULL WHERE id = :id";
+        }
         $stmt = $pdo->prepare($sql);
         
         // Eksekusi pembaruan status

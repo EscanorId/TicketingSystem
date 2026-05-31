@@ -108,8 +108,14 @@ try {
                                         <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px; line-height: 1.4;">
                                             <?= nl2br(htmlspecialchars($ticket['deskripsi'])) ?>
                                         </div>
-                                        <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 6px;">
-                                            Dibuat: <?= date('d M Y - H:i', strtotime($ticket['tanggal'])) ?>
+                                        <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 6px; display: flex; flex-direction: column; gap: 4px;">
+                                            <?php if (!empty($ticket['tanggal_pengajuan'])): ?>
+                                                <span>📅 Pengajuan: <strong><?= date('d M Y', strtotime($ticket['tanggal_pengajuan'])) ?></strong></span>
+                                            <?php endif; ?>
+                                            <span>⏱️ Sistem: <?= date('d M Y - H:i', strtotime($ticket['tanggal'])) ?></span>
+                                            <?php if ($ticket['status'] === 'Resolved' && !empty($ticket['tanggal_resolve'])): ?>
+                                                <span style="color: #10b981; font-weight: bold;">✅ Selesai: <?= date('d M Y - H:i', strtotime($ticket['tanggal_resolve'])) ?></span>
+                                            <?php endif; ?>
                                         </div>
                                     </td>
                                     <td data-label="Kategori">
