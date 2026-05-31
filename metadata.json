@@ -1,0 +1,6 @@
+{
+  "name": "Ticketing IT Support",
+  "description": "Aplikasi Ticketing IT Support responsive untuk mengelola dan memantau tiket bantuan teknis secara real-time.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

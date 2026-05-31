@@ -1,0 +1,376 @@
+/* style.css */
+/* Vanilla CSS untuk Aplikasi Ticketing IT Support Sederhana */
+/* Menggunakan Flexbox & Grid, responsif di mobile, tablet, dan desktop */
+
+/* 1. Reset Dasar & Variabel Warna */
+:root {
+    --primary-color: #2563eb;       /* Biru modern */
+    --primary-hover: #1d4ed8;
+    --background-color: #f8fafc;  /* Abu-abu sangat terang */
+    --card-background: #ffffff;   /* Putih murni */
+    --text-color: #1e293b;        /* Charcoal gelap */
+    --text-muted: #64748b;        /* Abu-abu teks pudar */
+    --border-color: #e2e8f0;      /* Abu-abu border */
+    
+    /* Warna Status */
+    --status-open: #fef3c7;       /* Kuning muda */
+    --status-open-text: #d97706;  /* Oranye tua */
+    --status-progress: #dbeafe;   /* Biru muda */
+    --status-progress-text: #2563eb; /* Biru */
+    --status-resolved: #dcfce7;   /* Hijau muda */
+    --status-resolved-text: #16a34a; /* Hijau */
+    
+    /* Warna Urgensi */
+    --urgency-low: #f1f5f9;
+    --urgency-low-text: #475569;
+    --urgency-medium: #ffedd5;
+    --urgency-medium-text: #ea580c;
+    --urgency-high: #fee2e2;
+    --urgency-high-text: #dc2626;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 2. Header & Navigasi */
+header {
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* 3. Kartu atau Konten Utama */
+.card {
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+/* Alert Notifikasi */
+.alert {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+.alert-success {
+    background-color: var(--status-resolved);
+    color: var(--status-resolved-text);
+    border: 1px solid rgba(22, 163, 74, 0.2);
+}
+.alert-danger {
+    background-color: var(--urgency-high);
+    color: var(--urgency-high-text);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+/* 4. Form Layout (Grid 2 Kolom di Desktop/Tablet) */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-group-full {
+    grid-column: span 2;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-color);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover);
+}
+
+/* 5. Tabel Responsif untuk Dashboard IT */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: #f8fafc;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Status Badge */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge-open {
+    background-color: var(--status-open);
+    color: var(--status-open-text);
+}
+
+.badge-progress {
+    background-color: var(--status-progress);
+    color: var(--status-progress-text);
+}
+
+.badge-resolved {
+    background-color: var(--status-resolved);
+    color: var(--status-resolved-text);
+}
+
+.badge-low {
+    background-color: var(--urgency-low);
+    color: var(--urgency-low-text);
+}
+
+.badge-medium {
+    background-color: var(--urgency-medium);
+    color: var(--urgency-medium-text);
+}
+
+.badge-high {
+    background-color: var(--urgency-high);
+    color: var(--urgency-high-text);
+}
+
+/* Form Update Status */
+.status-action-form {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.btn-status {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 6px;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-open {
+    color: var(--status-open-text);
+    border-color: rgba(217, 119, 6, 0.3);
+}
+.btn-open:hover {
+    background-color: var(--status-open);
+}
+
+.btn-progress {
+    color: var(--status-progress-text);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+.btn-progress:hover {
+    background-color: var(--status-progress);
+}
+
+.btn-resolved {
+    color: var(--status-resolved-text);
+    border-color: rgba(22, 163, 74, 0.3);
+}
+.btn-resolved:hover {
+    background-color: var(--status-resolved);
+}
+
+/* 6. Media Queries untuk Responsivitas */
+
+/* Tablet & Mobile (Lebar Layar Maksimal 768px) */
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr; /* Kolom form menumpuk menjadi 1 kolom */
+    }
+    
+    .form-group-full {
+        grid-column: span 1;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        flex-flow: row wrap;
+    }
+}
+
+/* Sangat Responsif: Mengubah Tabel Menjadi Card di Layar Mobile Sangat Kecil (Lebar Layar Maksimal 640px) */
+@media (max-width: 640px) {
+    /* Sembunyikan elemen thead tabel */
+    table thead {
+        display: none;
+    }
+
+    /* Paksa setiap baris (tr) tampil seperti kartu mandiri */
+    table, table tbody, table tr, table td {
+        display: block;
+        width: 100%;
+    }
+
+    table tr {
+        margin-bottom: 20px;
+        background-color: #ffffff;
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        overflow: hidden;
+    }
+
+    table td {
+        text-align: right;
+        padding: 10px 15px;
+        position: relative;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 0.9rem;
+    }
+
+    table td:last-child {
+        border-bottom: none;
+        text-align: center;
+        background-color: #f8fafc;
+        padding: 15px;
+    }
+
+    /* Tambahkan label kustom menggunakan data attribute CSS */
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        font-weight: 700;
+        text-transform: capitalize;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+    }
+
+    .status-action-form {
+        justify-content: center;
+    }
+}
